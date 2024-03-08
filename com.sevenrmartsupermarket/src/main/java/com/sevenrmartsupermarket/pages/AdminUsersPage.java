@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
-import com.sevenrmartsupermarket.utilities.PageUtility;
+
 
 public class AdminUsersPage {
 	WebDriver driver;
