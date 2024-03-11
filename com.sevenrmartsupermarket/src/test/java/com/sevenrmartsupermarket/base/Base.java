@@ -4,8 +4,6 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
 
-import javax.swing.text.Utilities;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -14,8 +12,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-
-import com.beust.jcommander.Parameter;
 import com.sevenrmartsupermarket.constants.Constants;
 import com.sevenrmartsupermarket.utilities.ScreenShot;
 
@@ -72,7 +68,7 @@ public class Base {
 		{
 			ScreenShot.takeScreenShot(driver, itestresult.getName());
 		}
-		//driver.close();
+		driver.close();
 		}
 
 }
