@@ -13,7 +13,6 @@ public class LoginTest extends Base
  LoginPage loginpage;
  HomePage homepage;
 @Test
-
 public void verifyUserLogin()
 {
 	loginpage= new LoginPage(driver);
@@ -24,9 +23,10 @@ public void verifyUserLogin()
 	String actualProfileName=homepage.getProfileName();
 	Assert.assertEquals(actualProfileName, expectedProfileName);
 }
-@Test(groups = "smoke")
+@Test(retryAnalyzer =com.sevenrmartsupermarket.listeners.RetryAnalyzer.class)
 public void verifyLoginFailedAlert()
 {
+	
 	loginpage= new LoginPage(driver);
 	homepage= new HomePage(driver);
 	loginpage.login("admin","123"); 
@@ -44,11 +44,11 @@ public void verifyRememberMeText()
 	String expectedResult="Remember Me";
 	Assert.assertEquals(actualResult, expectedResult);
 }
-@Test(groups = "smoke")
+@Test
 public void verifyRememberMeISSelected()
 {
 	loginpage= new LoginPage(driver);
-	boolean result=loginpage.isSelectedRememberMe();
-	Assert.assertTrue(result);
-}
+	boolean actualresult=loginpage.isSelectedRememberMe();
+	Assert.assertTrue(actualresult);
+	System.out.println(actualresult);}
 }

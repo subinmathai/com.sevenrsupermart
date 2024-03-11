@@ -53,7 +53,7 @@ public class AdminUsersTest extends Base {
 		 adminuserspage= new AdminUsersPage(driver);
 		 loginpage.login();
 		 adminuserspage.clickOnAdminUsers();
-		 adminuserspage.editUsers("admin123**Marlon");
+		 adminuserspage.editUsers("user743588711");
 	 }
 	 @Test
 	 public void verifyStatusOfUsers()

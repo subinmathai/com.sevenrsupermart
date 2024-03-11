@@ -3,8 +3,11 @@ package com.sevenrmartsupermarket.pages;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -31,6 +34,13 @@ WebElement changeStatus;
 @FindBy(xpath = "//select[@id='status']")
 WebElement deliveryStatusList;
 //List<String> options=new ArrayList<String>();
+@FindBy(xpath = "//div[contains(text(),'Update')]")
+WebElement updateLabel;
+@FindBy(xpath = "//button[@name='Update_st'][1]")
+WebElement updateButton;
+@FindBy(xpath = "//table/tbody/tr/td[6]/span[1]")
+WebElement newStatus;
+
 
 
 public ManageOrderPage(WebDriver driver)
@@ -55,6 +65,12 @@ public void ClickonsearchListOrder()
 	
 	searching.click();
 }
+public void searchAnOrder()
+{
+	SearchButtonClick();
+	enterOrderid("126");
+	ClickonsearchListOrder();
+}
 	
 public void changeStatusbuttonClick()
 {
@@ -62,15 +78,22 @@ public void changeStatusbuttonClick()
 	pageutility.scrollAndClick(changeStatus);
 	
 }
-public void selectDeliveryStatus() {
+public void selectDeliveryStatus() 
+{
+	//Actions actions= new Actions(driver);
+	changeStatusbuttonClick();
 	PageUtility pageUtility= new PageUtility(driver);
 	deliveryStatusList.click();
-	pageUtility.select_ByIndex(deliveryStatusList, 1);
-	
-	
-	
-	
-}
+	pageUtility.select_ByIndex(deliveryStatusList, 3);
+	//actions.contextClick().build().perform();
+	//updateLabel.click();
+	//updateButton.click();
+	pageUtility.scrollAndClick(deliveryStatusList);
+	}
+public String checkCurrentDeliveryStatus()
+{
+	return newStatus.getText();
 }
 
+}
 

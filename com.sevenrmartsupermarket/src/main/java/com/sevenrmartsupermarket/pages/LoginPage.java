@@ -21,8 +21,11 @@ public class LoginPage {
 	WebElement loginButton;
 	@FindBy(xpath = "//h5[text()=' Alert!']")
 	WebElement invalidAlert;
-	@FindBy(xpath = "//label[contains(text(),'Remember ')]")
+	@FindBy(xpath = "//label[contains(text(),'Remember')]")
 	WebElement rememberMe;
+	@FindBy(xpath = "//input[@id='remember']")
+	WebElement rememberMeCheckbox;
+	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -68,9 +71,10 @@ public class LoginPage {
 	{
 		return rememberMe.getText();
 	}
+	
 	public boolean isSelectedRememberMe()
 	{
 		rememberMe.click();
-		return rememberMe.isSelected();
+		return rememberMeCheckbox.isSelected();
 	}
 }

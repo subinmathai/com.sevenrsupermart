@@ -72,7 +72,7 @@ public class Base {
 		{
 			ScreenShot.takeScreenShot(driver, itestresult.getName());
 		}
-		driver.close();
+		//driver.close();
 		}
 
 }

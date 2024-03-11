@@ -32,8 +32,7 @@ public class AdminUsersPage {
 	WebElement userType;
 	@FindBy (xpath="//button[@name='Create']")
 	WebElement savebtn;
-	@FindBy(xpath="//table/tbody/tr//td[1]")
-	List<WebElement>employeesNames;
+
 	@FindBy (xpath="//a[@class='btn btn-rounded btn-primary']")
 	WebElement searchButton;
 	@FindBy (xpath="//input[@id='un']")
