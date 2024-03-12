@@ -22,8 +22,6 @@ public class ManageDeliveryBoyTest extends Base
 		String fname=GeneralUtility.get_RandomFirstName();
 		System.out.println(fname);
 		managedeliveryboy.createNewDeliveryBoy("Subi "+fname, "subi@gmail.com", "12365", "anus", "leon "+fname, "123");
-		
-	
 	}
 	
 }
