@@ -1,9 +1,16 @@
 package com.sevenrmartsupermarket.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.sevenrmartsupermarket.utilities.GeneralUtility;
+import com.sevenrmartsupermarket.utilities.PageUtility;
 
 public class HomePage {
 	WebDriver driver;
@@ -17,6 +24,10 @@ public class HomePage {
 	WebElement shopName;
 	@FindBy(xpath = "//img[@class='brand-image img-circle elevation-3']")
 	WebElement shopLogo;
+	@FindBy(xpath = "//section//div/p")
+	List<WebElement> iconslist;
+	
+	
 	public HomePage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -42,4 +53,11 @@ public class HomePage {
 	{
 		return shopLogo.isDisplayed();
 	}
+	public List<String> printAllIconsNames()
+	{
+		GeneralUtility generalutility= new GeneralUtility();
+		List<String> iconsName=new ArrayList<String>();
+		iconsName=generalutility.getTestofElements(iconslist);
+	    return iconsName;
+}
 }
