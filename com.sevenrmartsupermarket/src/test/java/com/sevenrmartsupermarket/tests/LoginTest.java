@@ -50,5 +50,6 @@ public void verifyRememberMeISSelected()
 	loginpage= new LoginPage(driver);
 	boolean actualresult=loginpage.isSelectedRememberMe();
 	Assert.assertTrue(actualresult);
-	System.out.println(actualresult);}
+	//System.out.println(actualresult);
+	}
 }
