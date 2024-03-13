@@ -14,59 +14,54 @@ import com.sevenrmartsupermarket.utilities.PageUtility;
 
 public class ManageProductPage {
 	WebDriver driver;
-	GeneralUtility generalutility= new GeneralUtility();
-	
+	GeneralUtility generalutility = new GeneralUtility();
+
 	@FindBy(xpath = "//p[text()='Manage Product']")
-	WebElement manageProductLink;
-	@FindBy (xpath="//table/tbody/tr/td[2]")
-	List<WebElement> titlesNames;
-	public ManageProductPage(WebDriver driver)
-	{
-		this.driver=driver;
+	private WebElement manageProductLink;
+	@FindBy(xpath = "//table/tbody/tr/td[2]")
+	private List<WebElement> titlesNames;
+
+	public ManageProductPage(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-		public void clickOnManageProductLink()
-		{
-			manageProductLink.click();
-	    }
-		public String changeProductStatus(String productType)
-		{
-			PageUtility pageutility= new PageUtility(driver);
-			List<String> productnames=new ArrayList<String>();
-			productnames= generalutility.getTestofElements(titlesNames);
-			int index=0;
-			for(index=0;index<productnames.size();index++)
-			{
-				if(productType.equals(productnames.get(index)))
-						{
-					index++;
-					break;
-						}
+
+	public void clickOnManageProductLink() {
+		manageProductLink.click();
+	}
+
+	public String changeProductStatus(String productType) {
+		PageUtility pageutility = new PageUtility(driver);
+		List<String> productnames = new ArrayList<String>();
+		productnames = generalutility.getTestofElements(titlesNames);
+		int index = 0;
+		for (index = 0; index < productnames.size(); index++) {
+			if (productType.equals(productnames.get(index))) {
+				index++;
+				break;
 			}
-			
-			WebElement status= driver.findElement(By.xpath("//table/tbody/tr["+index+"]//td[7]//a[1]"));
-			pageutility.scrollAndClick(status);
-			WebElement posistionelements= driver.findElement(By.xpath("//table/tbody/tr["+index+"]/td[7]/a/span"));
-			return (posistionelements.getText());
-}
-		public void clickEditProductDetails(String productType)
-		{
-			PageUtility pageutility= new PageUtility(driver);
-			List<String> productnames=new ArrayList<String>();
-			productnames= generalutility.getTestofElements(titlesNames);
-			int index=0;
-			for(index=0;index<productnames.size();index++)
-			{
-				if(productType.equals(productnames.get(index)))
-						{
-					index++;
-					break;
-						}
-			}
-			WebElement edit= driver.findElement(By.xpath("//table/tbody/tr["+index+"]/td[9]/a[1]"));
-			pageutility.scrollAndClick(edit);
-			
 		}
-		
+
+		WebElement status = driver.findElement(By.xpath("//table/tbody/tr[" + index + "]//td[7]//a[1]"));
+		pageutility.scrollAndClick(status);
+		WebElement posistionelements = driver.findElement(By.xpath("//table/tbody/tr[" + index + "]/td[7]/a/span"));
+		return (posistionelements.getText());
+	}
+
+	public void clickEditProductDetails(String productType) {
+		PageUtility pageutility = new PageUtility(driver);
+		List<String> productnames = new ArrayList<String>();
+		productnames = generalutility.getTestofElements(titlesNames);
+		int index = 0;
+		for (index = 0; index < productnames.size(); index++) {
+			if (productType.equals(productnames.get(index))) {
+				index++;
+				break;
+			}
+		}
+		WebElement edit = driver.findElement(By.xpath("//table/tbody/tr[" + index + "]/td[9]/a[1]"));
+		pageutility.scrollAndClick(edit);
+
+	}
+
 }

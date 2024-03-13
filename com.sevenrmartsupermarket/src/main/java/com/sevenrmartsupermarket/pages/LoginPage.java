@@ -14,17 +14,17 @@ public class LoginPage {
 	Properties properties = new Properties();
 	
 	@FindBy(xpath = "//input[@class='form-control'][1]")
-	WebElement userNameField;
+	private WebElement userNameField;
 	@FindBy(xpath = "//input[@placeholder='Password']")
-	WebElement passwordField;
+	private WebElement passwordField;
 	@FindBy(xpath = "//button[@class='btn btn-dark btn-block']")
-	WebElement loginButton;
+	private WebElement loginButton;
 	@FindBy(xpath = "//h5[text()=' Alert!']")
-	WebElement invalidAlert;
+	private WebElement invalidAlert;
 	@FindBy(xpath = "//label[contains(text(),'Remember')]")
-	WebElement rememberMe;
+	private WebElement rememberMe;
 	@FindBy(xpath = "//input[@id='remember']")
-	WebElement rememberMeCheckbox;
+	private WebElement rememberMeCheckbox;
 	
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;

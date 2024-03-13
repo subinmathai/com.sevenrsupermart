@@ -21,26 +21,26 @@ public class AdminUsersPage {
 	
 	
 	@FindBy (xpath="//p[text()='Admin Users'][1]")
-	WebElement adminUsersLink;
+	private WebElement adminUsersLink;
 	@FindBy (xpath="//a[@class='btn btn-rounded btn-danger']")
-	WebElement newButton;
+	private WebElement newButton;
 	@FindBy (xpath="//input[@id='username']")
-	WebElement userName;
+	private WebElement userName;
 	@FindBy (xpath="//input[@id='password']")
-	WebElement password;
+	private WebElement password;
 	@FindBy (xpath="//select[@id='user_type']")
-	WebElement userType;
+	private WebElement userType;
 	@FindBy (xpath="//button[@name='Create']")
-	WebElement savebtn;
+	private WebElement savebtn;
 
 	@FindBy (xpath="//a[@class='btn btn-rounded btn-primary']")
-	WebElement searchButton;
+	private WebElement searchButton;
 	@FindBy (xpath="//input[@id='un']")
-	WebElement userNameSearchField;
+	private WebElement userNameSearchField;
 	@FindBy (xpath="//i[@class='fa fa-search']")
-	WebElement searchingKey;
+	private WebElement searchingKey;
 	@FindBy (xpath="//table/tbody/tr/td[1]")
-	List<WebElement> personsName;
+	private List<WebElement> personsName;
 	
 	public AdminUsersPage(WebDriver driver)
 	{

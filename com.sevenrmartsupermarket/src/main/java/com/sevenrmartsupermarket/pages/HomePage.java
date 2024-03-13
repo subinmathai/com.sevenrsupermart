@@ -15,17 +15,17 @@ import com.sevenrmartsupermarket.utilities.PageUtility;
 public class HomePage {
 	WebDriver driver;
 	@FindBy(xpath = "//a[contains(text(),'Admin')]")
-	WebElement profileName;
+	private WebElement profileName;
 	@FindBy(xpath = "//li[text()='Dashboard']")
-	WebElement pageName;
+	private WebElement pageName;
 	@FindBy(xpath = "//a[text()='Home']")
-	WebElement defaultPageName;
+	private WebElement defaultPageName;
 	@FindBy(xpath = "//span[@class='brand-text font-weight-light']")
-	WebElement shopName;
+	private WebElement shopName;
 	@FindBy(xpath = "//img[@class='brand-image img-circle elevation-3']")
-	WebElement shopLogo;
+	private WebElement shopLogo;
 	@FindBy(xpath = "//section//div/p")
-	List<WebElement> iconslist;
+	private List<WebElement> iconslist;
 	
 	
 	public HomePage(WebDriver driver)

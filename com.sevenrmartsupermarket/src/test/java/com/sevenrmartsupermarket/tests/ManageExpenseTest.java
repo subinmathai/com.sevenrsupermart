@@ -47,14 +47,15 @@ public void verifyMangeExpenseoptionsList()
 		manageexpensepage.editExpenseCategory("apple");
 	}
 	@Test
-	public void verifyExpenseCategoryUpdate()
+	public void verifyAddNewExpense()
 	{
 		loginpage= new LoginPage(driver);
 		manageexpensepage= new ManageExpensePage(driver);
 		loginpage.login();
-		manageexpensepage.clickOnManageExpensePageLink();
-		manageexpensepage.clickOnManageCategoruoption();
-		manageexpensepage.editExpenseCategory("apple");
-		manageexpensepage.updateExpenseCategory();
+		manageexpensepage.createNewExpense("1000");
+		String ActualAlert=manageexpensepage.getAlertMessage();
+		String ExpectedAlert="Alert!";
+		Assert.assertEquals(ActualAlert, ExpectedAlert);
+		
 	}
 }

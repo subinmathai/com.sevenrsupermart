@@ -9,24 +9,25 @@ import com.sevenrmartsupermarket.utilities.PageUtility;
 
 public class ManageDeliveryBoyPage {
 	WebDriver driver;
+	
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'][1]")
-	WebElement manageDeliveryBotBtn;
+	private WebElement manageDeliveryBotBtn;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Deliveryboy/add']")
-	WebElement newButton;
+	private WebElement newButton;
 	@FindBy(xpath = "//input[@id='name']")
-	WebElement nameField;
+	private WebElement nameField;
 	@FindBy(xpath = "//input[@id='email']")
-	WebElement emailField;
+	private WebElement emailField;
 	@FindBy(xpath = "//input[@id='phone']")
-	WebElement phoneNumberField;
+	private WebElement phoneNumberField;
 	@FindBy(xpath = "//textarea[@id='address']")
-	WebElement addressfield;
+	private WebElement addressfield;
 	@FindBy(xpath = "//input[@id='username']")
-	WebElement userNamefield;
+	private WebElement userNamefield;
 	@FindBy(xpath = "//input[@id='password']")
-	WebElement passwordfield;
+	private WebElement passwordfield;
 	@FindBy(xpath = "//button[text()='Save']")
-	WebElement saveButton;
+	private WebElement saveButton;
 	
 	
 	public ManageDeliveryBoyPage(WebDriver driver)
