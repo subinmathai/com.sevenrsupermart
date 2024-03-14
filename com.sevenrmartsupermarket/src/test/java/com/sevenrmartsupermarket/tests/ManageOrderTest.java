@@ -20,11 +20,13 @@ public class ManageOrderTest extends Base {
 		 manageorderpage= new ManageOrderPage(driver);
 		 manageorderpage.clickOnManageOrder();
 		 manageorderpage.searchAnOrder();
-		 
+		 String actualTitle=manageorderpage.get_searchOrderfieldTittle();
+		 String expectedTitle="Search List Orders";
+		 Assert.assertEquals(actualTitle, expectedTitle);
 		 
 	 }
 	 @Test
-	 public void verifyUpdateOrderChangeStatus()
+	 public void verifyUpdateOrderChangeStatusPage()
 		{
 		 loginpage= new LoginPage(driver);
 		 loginpage.login();
@@ -32,9 +34,12 @@ public class ManageOrderTest extends Base {
 		 manageorderpage.clickOnManageOrder();
 		 manageorderpage.searchAnOrder();
 		 manageorderpage.selectDeliveryStatus();
+		 String actualTitle=manageorderpage.statusUpadatePageTitle();
+		 String expectedTitle="Update Status Order Id :121";
+		 Assert.assertEquals(actualTitle, expectedTitle);
 		}
 	 @Test
-	public void verifyStatusIsUpdated()
+	public void verifyOrderStatusIsUpdated()
 	{
 		 loginpage= new LoginPage(driver);
 		 loginpage.login();
@@ -42,7 +47,7 @@ public class ManageOrderTest extends Base {
 		 manageorderpage.clickOnManageOrder();
 		 manageorderpage.searchAnOrder();
 		 String actualStatus= manageorderpage.checkCurrentDeliveryStatus();
-		 String expectedStatus= "PAID";
+		 String expectedStatus= "DELIVERED";
 		 Assert.assertEquals(actualStatus, expectedStatus);
 	}
 	 

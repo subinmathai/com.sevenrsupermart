@@ -1,15 +1,19 @@
 package com.sevenrmartsupermarket.pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.sevenrmartsupermarket.utilities.GeneralUtility;
 import com.sevenrmartsupermarket.utilities.PageUtility;
 
 public class ManageDeliveryBoyPage {
 	WebDriver driver;
-	
+	GeneralUtility generalutility= new GeneralUtility();
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-deliveryboy'][1]")
 	private WebElement manageDeliveryBotBtn;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/Deliveryboy/add']")
@@ -28,8 +32,12 @@ public class ManageDeliveryBoyPage {
 	private WebElement passwordfield;
 	@FindBy(xpath = "//button[text()='Save']")
 	private WebElement saveButton;
-	
-	
+	@FindBy (xpath="//h5[text()=' Alert!']")
+	private WebElement savedAlertMessage;
+	@FindBy(xpath = "//form//div/label")
+	private List<WebElement> fielsList;
+	@FindBy(xpath = "//table/tbody/tr//td[1]")
+	private List<WebElement> deliveryBoyNameList;
 	public ManageDeliveryBoyPage(WebDriver driver)
 	{
 		this.driver = driver;
@@ -69,11 +77,15 @@ public class ManageDeliveryBoyPage {
 	}
 	public void clickOnSave()
 	{
-		saveButton.click();
-	}
-	public void createNewDeliveryBoy(String name,String emailid,String phn,String add,String username,String pwd)
-	{
 		PageUtility pageutility= new PageUtility(driver);
+		pageutility.scrollAndClick(saveButton);
+	}
+	public String get_SaveAlert()
+	{
+		return savedAlertMessage.getText();
+	}
+	public void saveNewDeliveryBoy(String name,String emailid,String phn,String add,String username,String pwd)
+	{
 		clickOnNew();
 		enterName(name);
 		enterEmailid(emailid);
@@ -81,7 +93,15 @@ public class ManageDeliveryBoyPage {
 		enterAddress(add);
 		enterUserName(username);
 		enterPassword(pwd);
-		pageutility.scrollAndClick(saveButton);
-		
+		clickOnSave();
 	}
+	public List<String> printAllFieldsNames()
+	{
+		GeneralUtility generalutility= new GeneralUtility();
+		List<String> allFields=new ArrayList<String>();
+		allFields=generalutility.getTestofElements(fielsList);
+	    return allFields;
+    }
+	
+		
 }

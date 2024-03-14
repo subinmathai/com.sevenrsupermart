@@ -39,8 +39,18 @@ public class AdminUsersPage {
 	private WebElement userNameSearchField;
 	@FindBy (xpath="//i[@class='fa fa-search']")
 	private WebElement searchingKey;
+	@FindBy (xpath="//h5[text()=' Alert!']")
+	private WebElement alert;
 	@FindBy (xpath="//table/tbody/tr/td[1]")
 	private List<WebElement> personsName;
+	@FindBy (xpath="//table/tbody/tr[1]/td[1]")
+	private WebElement searchNameResult;
+	@FindBy (xpath="//h5[text()=' Alert!']")
+	private WebElement deactivatedAlertMessage;
+	@FindBy (xpath="//button[contains(text(),' Update')]")
+	private WebElement updateButton;
+	@FindBy (xpath="//h5[text()=' Alert!']")
+	private WebElement updatedAlertMessage;
 	
 	public AdminUsersPage(WebDriver driver)
 	{
@@ -72,6 +82,10 @@ public class AdminUsersPage {
 	{
 		savebtn.click();
 	}
+	public String getNewUsercreatedAlertMessage()
+	{
+		return alert.getText();
+	}
 	public void createNewUser(String username, String pwd, String userType)
 	{
 		clickOnAdminUsers();
@@ -81,12 +95,20 @@ public class AdminUsersPage {
 		SelecterUserType(userType);
 		clickOnSave();
 	}
-	public void searchAUser(String username)
+	public void clickOnsearchButton()
 	{
-		searchButton.click();
+		searchButton.click();	
+	}
+	public void searchUser(String username)
+	{
+		clickOnsearchButton();
 		userNameSearchField.sendKeys(username);
 		searchingKey.click();
+	}
+	public String searchUserNameResult()
+	{
 		
+		return searchNameResult.getText();
 	}
 	public String deactivateUser(String person)
 	{
@@ -104,11 +126,10 @@ public class AdminUsersPage {
 		
 		WebElement unlock= driver.findElement(By.xpath("//table/tbody/tr["+index+"]//td[5]//a[1]"));
 		unlock.click();
-		WebElement posistionelements= driver.findElement(By.xpath("//table//tbody/tr["+index+"]//td[1]"));
-		return (posistionelements.getText());
+		return (deactivatedAlertMessage.getText());
 			
 	}
-	public String editUsers(String name)
+	public String ClickOnUserEditButton(String name)
 	{
 		List<String> names=new ArrayList<String>();
 		names= generalutility.getTestofElements(personsName);
@@ -126,26 +147,21 @@ public class AdminUsersPage {
 		edit.click();
 		WebElement posistionelements= driver.findElement(By.xpath("//table//tbody/tr["+index+"]//td[1]"));
 		return (posistionelements.getText());
-			
 	}
-	public String getStatusOfUsers(String name)
+	public String UpdateUserDetails(String name)
 	{
-		List<String>names=new ArrayList<String>();
-		names=generalutility.getTestofElements(personsName);
-		int index=0;
-		for(index=0;index<names.size();index++)
-		{
-			if(name.equals(names.get(index)))
-			{
-				index++;
-				break;
-			}
-		}
-		WebElement status= driver.findElement(By.xpath("//table/tbody/tr["+index+"]//td[3]"));
-		return (status.getText());
-		
-		
+		ClickOnUserEditButton(name);
+		updateButton.click();
+		return updatedAlertMessage.getText();
 	}
-	
-
+	public boolean checkUserNameMandatoty()
+	{
+		boolean username = Boolean.parseBoolean(userName.getAttribute("required"));
+		return username;
+	}
+	public boolean checkPasswordMandatoty()
+	{
+		boolean pwd = Boolean.parseBoolean(password.getAttribute("required"));
+		return pwd;
+	}
 }

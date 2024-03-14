@@ -13,15 +13,8 @@ import com.sevenrmartsupermarket.pages.LoginPage;
 public class HomeTest extends Base{
 	 LoginPage loginpage;
 	 HomePage homepage;
+	
 	 @Test(groups={"grp1","grp2"})
-	 public void verifyGettext()
-	 {
-
-			loginpage= new LoginPage(driver);
-			homepage= new HomePage(driver);
-			loginpage.login();
-	 }
-	 @Test(groups = "smoke")
 	 public void verifyPageName()
 	 {
 		 loginpage= new LoginPage(driver);

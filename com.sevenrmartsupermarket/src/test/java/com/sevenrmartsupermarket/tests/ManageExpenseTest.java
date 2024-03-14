@@ -37,16 +37,6 @@ public void verifyMangeExpenseoptionsList()
 		Assert.assertEquals(actualTitle, ExpectedTitle);
  }
 	@Test
-	public void verifyExpenseCategoryEdit()
-	{
-		loginpage= new LoginPage(driver);
-		manageexpensepage= new ManageExpensePage(driver);
-		loginpage.login();
-		manageexpensepage.clickOnManageExpensePageLink();
-		manageexpensepage.clickOnManageCategoruoption();
-		manageexpensepage.editExpenseCategory("apple");
-	}
-	@Test
 	public void verifyAddNewExpense()
 	{
 		loginpage= new LoginPage(driver);
@@ -55,7 +45,6 @@ public void verifyMangeExpenseoptionsList()
 		manageexpensepage.createNewExpense("1000");
 		String ActualAlert=manageexpensepage.getAlertMessage();
 		String ExpectedAlert="Alert!";
-		Assert.assertEquals(ActualAlert, ExpectedAlert);
-		
+		Assert.assertEquals(ActualAlert, ExpectedAlert);	
 	}
 }

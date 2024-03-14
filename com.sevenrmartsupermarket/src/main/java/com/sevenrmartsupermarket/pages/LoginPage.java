@@ -72,7 +72,7 @@ public class LoginPage {
 		return rememberMe.getText();
 	}
 	
-	public boolean isSelectedRememberMe()
+	public boolean isSelectedRememberMeCheckBox()
 	{
 		rememberMe.click();
 		return rememberMeCheckbox.isSelected();

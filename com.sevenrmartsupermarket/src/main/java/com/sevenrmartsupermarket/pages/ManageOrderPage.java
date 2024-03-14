@@ -25,22 +25,25 @@ public class ManageOrderPage {
 	private WebElement manageorderbutton;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
 	private WebElement searchButton;
+	@FindBy(xpath = "//h4[text()='Search List Orders']")
+	private WebElement searchFieldTittle;
 	@FindBy(xpath = "//input[@id='od']")
 	private WebElement orderIdField;
 	@FindBy(xpath = "//button[@name='Search']")
 	private WebElement searching;
 	@FindBy(xpath = "//table/tbody/tr[1]//td[6]//a[1]")
 	private WebElement changeStatus;
+	@FindBy(xpath = "//button[@class='btn btn-info'][1]")
+	private WebElement updateButton;
 	@FindBy(xpath = "//select[@id='status']")
 	private WebElement deliveryStatusList;
-//List<String> options=new ArrayList<String>();
 	@FindBy(xpath = "//div[contains(text(),'Update')]")
 	private WebElement updateLabel;
-	@FindBy(xpath = "//button[@name='Update_st'][1]")
-	private WebElement updateButton;
 	@FindBy(xpath = "//table/tbody/tr/td[6]/span[1]")
 	private WebElement newStatus;
-
+	@FindBy(xpath = "//h4[contains(text(),'Update Status')]")
+	private WebElement statusUpdateBoxHeading;
+	
 	public ManageOrderPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -58,33 +61,45 @@ public class ManageOrderPage {
 		orderIdField.sendKeys(id);
 	}
 
-	public void ClickonsearchListOrder() {
+	public void clickonSearchListOrder() {
 
 		searching.click();
 	}
-
+   public String get_searchOrderfieldTittle()
+   {
+	   return searchFieldTittle.getText();
+   }
 	public void searchAnOrder() {
 		SearchButtonClick();
-		enterOrderid("126");
-		ClickonsearchListOrder();
+		enterOrderid("121");
+		clickonSearchListOrder();
 	}
-
 	public void changeStatusbuttonClick() {
 		PageUtility pageutility = new PageUtility(driver);
 		pageutility.scrollAndClick(changeStatus);
-
 	}
-
+    public String statusUpadatePageTitle()
+    {
+    	return statusUpdateBoxHeading.getText();
+    }
 	public void selectDeliveryStatus() {
-		// Actions actions= new Actions(driver);
+		
 		changeStatusbuttonClick();
 		PageUtility pageUtility = new PageUtility(driver);
 		deliveryStatusList.click();
 		pageUtility.select_ByIndex(deliveryStatusList, 3);
-		// actions.contextClick().build().perform();
-		// updateLabel.click();
-		// updateButton.click();
 		pageUtility.scrollAndClick(deliveryStatusList);
+	}
+	public void clickOnUpdateButton()
+	{
+		updateButton.click();
+	}
+	public void updateDeliveryOderStatus()
+	{
+		searchAnOrder();
+		changeStatusbuttonClick();
+		selectDeliveryStatus();
+		clickOnUpdateButton();
 	}
 
 	public String checkCurrentDeliveryStatus() {

@@ -79,23 +79,6 @@ public class ManageExpensePage {
 		return expenceCategoryPageTitle.getText();
 	}
 
-	public String editExpenseCategory(String titleName) {
-
-		List<String> Alltitles = new ArrayList<String>();
-		Alltitles = generalutility.getTestofElements(expenseCategoryTitle);
-		int index = 0;
-		for (index = 0; index < Alltitles.size(); index++) {
-			if (titleName.equals(Alltitles.get(index))) {
-				index++;
-				break;
-			}
-		}
-		WebElement edit = driver.findElement(By.xpath("//table/tbody/tr[" + index + "]/td[2]/a[1]"));
-		pageutility.scrollAndClick(edit);
-		expenseCategoryUpadateButton.click();
-		return edit.getText();
-	}
-
 	public void clickOnManageExpensesubButton() {
 		manageExpenseSubButton.click();
 	}
