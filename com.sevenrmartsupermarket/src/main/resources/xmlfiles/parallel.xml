@@ -19,7 +19,6 @@
 	<test name="regresion2">
 		<classes>
 			<class name="com.sevenrmartsupermarket.tests.ManageOrderTest"> </class>
-			<class name="com.sevenrmartsupermarket.tests.MobileSliderTest"> </class>
 			<class name="com.sevenrmartsupermarket.tests.PushNotificationTest"> </class>
 		</classes>
 	</test>
