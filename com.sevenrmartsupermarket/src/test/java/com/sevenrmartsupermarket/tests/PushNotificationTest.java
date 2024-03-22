@@ -7,14 +7,14 @@ import com.sevenrmartsupermarket.base.Base;
 import com.sevenrmartsupermarket.pages.HomePage;
 import com.sevenrmartsupermarket.pages.LoginPage;
 import com.sevenrmartsupermarket.pages.PushNotificationPage;
-import com.sevenrmartsupermarket.utilities.Excel;
+import com.sevenrmartsupermarket.utilities.ExcelUtility;
 
 public class PushNotificationTest extends Base {
 	
 	LoginPage loginpage;
 	HomePage homepage;
 	PushNotificationPage pushnotificationpage;
-	Excel excel = new Excel();
+	ExcelUtility excelUtility = new ExcelUtility();
 	@Test
 
 	public void verifyPushNotificationMessage()
@@ -25,9 +25,9 @@ public class PushNotificationTest extends Base {
 		loginpage.login();
 		pushnotificationpage.clickOnPushNotification();
 		
-		excel.setExcelFile("PushNotificationData","Notification"); // excelworkbookname and sheet name
-		String title=excel.getCellData(0, 0);   // title data position
-		String description=excel.getCellData(0, 1);// description position
+		excelUtility.setExcelFile("PushNotificationData","Notification"); // excelworkbookname and sheet name
+		String title=excelUtility.getCellData(0, 0);   // title data position
+		String description=excelUtility.getCellData(0, 1);// description position
 		pushnotificationpage.enterTitleField(title);
 		pushnotificationpage.enterDescriptionField(description);
 		pushnotificationpage.SendButton();

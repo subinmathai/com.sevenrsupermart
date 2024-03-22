@@ -1,9 +1,5 @@
 package com.sevenrmartsupermarket.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import java.util.ArrayList;
-import org.apache.xmlbeans.impl.xb.xsdschema.ListDocument.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.sevenrmartsupermarket.base.Base;
@@ -25,7 +21,6 @@ public class AdminUsersTest extends Base {
 		 loginpage.login();
 		 String uname=GeneralUtility.get_RandomFirstName();
 		 adminuserspage.createNewUser("Subi"+uname,"123","Admin");
-		 System.out.println(GeneralUtility .get_RandomFirstName());//to avoid dulication this create differentname
 		 String actualAlertMessage=adminuserspage.getNewUsercreatedAlertMessage();
 		 String expectedAlertMessage="Alert!";
 		 Assert.assertEquals(actualAlertMessage, expectedAlertMessage);

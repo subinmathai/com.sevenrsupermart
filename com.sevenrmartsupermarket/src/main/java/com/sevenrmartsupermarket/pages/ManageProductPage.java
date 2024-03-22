@@ -20,7 +20,11 @@ public class ManageProductPage {
 	private WebElement manageProductLink;
 	@FindBy(xpath = "//table/tbody/tr/td[2]")
 	private List<WebElement> titlesNames;
-
+	@FindBy(xpath = "//h1[text()='List Products']")
+	private WebElement pageHeading;
+	@FindBy(xpath = "//h1[text()='Edit Product']")
+	private WebElement editPageHeading;
+	
 	public ManageProductPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -28,6 +32,10 @@ public class ManageProductPage {
 
 	public void clickOnManageProductLink() {
 		manageProductLink.click();
+	}
+	public String get_PageHeading()
+	{
+		return pageHeading.getText();
 	}
 
 	public String changeProductStatus(String productType) {
@@ -62,6 +70,10 @@ public class ManageProductPage {
 		WebElement edit = driver.findElement(By.xpath("//table/tbody/tr[" + index + "]/td[9]/a[1]"));
 		pageutility.scrollAndClick(edit);
 
+	}
+	public String get_EditPageHeading()
+	{
+		return editPageHeading.getText();
 	}
 
 }

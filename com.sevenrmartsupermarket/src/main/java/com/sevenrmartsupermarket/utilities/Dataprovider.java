@@ -5,13 +5,20 @@ import java.util.Set;
 import org.testng.annotations.DataProvider;
 
 public class Dataprovider {
-	Excel excel= new Excel();
+	ExcelUtility excelUtility= new ExcelUtility();
 	@DataProvider(name="Items")
 	
 	public Object[][] exceldata() 
 	{
-		excel.setExcelFile("LoginData", "LoginCredentials");
-		Object data[][]=excel.getMultidimentionalData(2, 2);
+		excelUtility.setExcelFile("LoginData", "LoginCredentials");
+		Object data[][]=excelUtility.getMultidimentionalData(2, 2);
+		return data;
+	}
+	@DataProvider(name="data")
+	public Object[][] dataOfManageLocation() 
+	{
+		excelUtility.setExcelFile("ManageLocationData", "Data");
+		Object data[][]=excelUtility.getMultidimentionalData(1, 2);
 		return data;
 	}
 

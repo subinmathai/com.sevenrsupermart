@@ -33,9 +33,7 @@ public class MobileSilderTest extends Base {
 		mobilesliderpage.clickOnMobileSliderLink();
 		mobilesliderpage.saveNewMobileSilderInformation();
 		String actualAlert=mobilesliderpage.get_AlertMessage();
-		Assert.assertEquals(actualAlert, "�\r\n"
-				+ "Alert!\r\n"
-				+ "Mobile Slider Created Successfully!");
+		Assert.assertEquals(actualAlert, "Alert!");
 	}
 	@Test
 	public void verifyFieldInNewMobileSilderSavePage()

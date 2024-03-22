@@ -31,7 +31,6 @@ public class Base {
 		}
 	}
 
-	/** Initializing driver **/
 	public void initialize(String browser, String url) {
 		if (browser.equals("Chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -68,7 +67,7 @@ public class Base {
 		{
 			ScreenShot.takeScreenShot(driver, itestresult.getName());
 		}
-		//driver.close();
+		driver.close();
 		}
 
 }

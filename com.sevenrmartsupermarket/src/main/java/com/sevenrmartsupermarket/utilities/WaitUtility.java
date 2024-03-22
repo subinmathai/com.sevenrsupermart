@@ -1,7 +1,6 @@
 package com.sevenrmartsupermarket.utilities;
 
 import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,4 +18,15 @@ public class WaitUtility {
 		wait= new WebDriverWait(driver,Duration.ofSeconds(time));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	public void waitForVisibilityOfElements(WebElement element, long time)
+	{
+		wait= new WebDriverWait(driver,Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.visibilityOfAllElements(element));
+	}
+	public void waitForInVisibilityOfElements(WebElement element, long time)
+	{
+		wait= new WebDriverWait(driver,Duration.ofSeconds(time));
+		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
+	
 }

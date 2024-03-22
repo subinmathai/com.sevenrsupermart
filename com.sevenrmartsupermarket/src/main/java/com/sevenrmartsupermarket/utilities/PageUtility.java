@@ -19,7 +19,7 @@ public class PageUtility {
 	public void select_ByIndex(WebElement element, int index)
 	{
 		select= new Select(element);
-		select.selectByIndex(index); // select using index
+		select.selectByIndex(index); 
 	}
 	public void select_ByVisibleText(WebElement element,String text)
 	{

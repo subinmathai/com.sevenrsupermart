@@ -1,6 +1,7 @@
 package com.sevenrmartsupermarket.pages;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.sevenrmartsupermarket.constants.Constants;
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
 import com.sevenrmartsupermarket.utilities.PageUtility;
+import com.sevenrmartsupermarket.utilities.WaitUtility;
 
 public class MobileSliderPage {
 	WebDriver driver;
@@ -36,6 +40,8 @@ public class MobileSliderPage {
 	private WebElement alerMessage;
 	@FindBy(xpath = "//form//div/label")
 	private List<WebElement>fieldNames;
+	@FindBy(xpath = "//div[@id='imagePreview']")
+	private WebElement imagePreview;
 	
 	public MobileSliderPage(WebDriver driver) {
 		this.driver = driver;
@@ -67,6 +73,8 @@ public class MobileSliderPage {
 	}
 	public void clickOnSave()
 	{
+		WaitUtility waitutility= new WaitUtility(driver);
+		waitutility.waitForVisibilityOfElements(imagePreview, 10);
 		saveButton.click();
 	}
 	public String get_AlertMessage()

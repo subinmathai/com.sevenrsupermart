@@ -3,6 +3,7 @@ package com.sevenrmartsupermarket.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.github.javafaker.Faker;
@@ -29,6 +30,9 @@ public class GeneralUtility {
 	{
 		Faker faker= new Faker();
 		return faker.name().firstName();
+	}
+	public String getTabTitle(WebDriver driver) {
+		return (driver.getTitle());
 	}
 	
 }
